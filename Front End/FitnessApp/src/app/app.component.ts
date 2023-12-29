@@ -1,9 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { FitnessService } from './services/fitness.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +7,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor(private http:HttpClient){}
   title = 'FitnessApp';
-  constructor(private fitnessService:FitnessService){}
-
-  ngOnInit() {
-    this.fitnessService.getAllFitnesses().subscribe(response => console.log(response));
+  ngOnInit(){
+    this.http.get<any>("http://localhost:8000/api/fitness/all").subscribe(response =>{
+      console.log(response);
+    })
   }
 }
