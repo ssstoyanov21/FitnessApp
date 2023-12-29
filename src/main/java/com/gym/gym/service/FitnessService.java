@@ -1,20 +1,14 @@
 package com.gym.gym.service;
 
-import com.gym.gym.dto.ClientDTO;
 import com.gym.gym.dto.FitnessDTO;
 import com.gym.gym.dto.Requests.CreateFitnessRequest;
-import com.gym.gym.dto.Requests.UpdateClientRequest;
 import com.gym.gym.dto.Requests.UpdateFitnessRequest;
 import com.gym.gym.dto.Responses.*;
-import com.gym.gym.entity.Client;
 import com.gym.gym.entity.Fitness;
-import com.gym.gym.mapper.ClientMapper;
 import com.gym.gym.mapper.FitnessMapper;
-import com.gym.gym.repository.ClientRepository;
 import com.gym.gym.repository.FitnessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

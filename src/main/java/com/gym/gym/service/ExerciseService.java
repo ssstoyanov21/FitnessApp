@@ -1,18 +1,13 @@
 package com.gym.gym.service;
 
 import com.gym.gym.dto.ExerciseDTO;
-import com.gym.gym.dto.ExerciseDTO;
-import com.gym.gym.dto.Requests.CreateExerciseRequest;
 import com.gym.gym.dto.Requests.CreateExerciseRequest;
 import com.gym.gym.dto.Requests.UpdateExerciseRequest;
 import com.gym.gym.dto.Responses.BaseResponse;
 import com.gym.gym.dto.Responses.GetAllExercisesResponse;
 import com.gym.gym.dto.Responses.GetExerciseResponse;
 import com.gym.gym.entity.Exercise;
-import com.gym.gym.entity.Exercise;
 import com.gym.gym.mapper.ExerciseMapper;
-import com.gym.gym.mapper.ExerciseMapper;
-import com.gym.gym.repository.ExerciseRepository;
 import com.gym.gym.repository.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,12 +1,10 @@
 package com.gym.gym.controller;
 
 import com.gym.gym.dto.Requests.CreateExerciseRequest;
-import com.gym.gym.dto.Requests.CreateExerciseRequest;
 import com.gym.gym.dto.Requests.UpdateExerciseRequest;
 import com.gym.gym.dto.Responses.BaseResponse;
 import com.gym.gym.dto.Responses.GetAllExercisesResponse;
 import com.gym.gym.dto.Responses.GetExerciseResponse;
-import com.gym.gym.service.ExerciseService;
 import com.gym.gym.service.ExerciseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

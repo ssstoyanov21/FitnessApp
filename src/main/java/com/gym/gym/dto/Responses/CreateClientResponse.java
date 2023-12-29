@@ -1,6 +1,5 @@
 package com.gym.gym.dto.Responses;
 
-import com.gym.gym.dto.ClientDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

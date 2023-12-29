@@ -7,7 +7,6 @@ import com.gym.gym.enums.Role;
 import org.springframework.stereotype.Component; //check-ni
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Component
 public class ClientMapper {

@@ -1,7 +1,6 @@
 package com.gym.gym.controller;
 
 import com.gym.gym.dto.Requests.CreateFitnessRequest;
-import com.gym.gym.dto.Requests.UpdateClientRequest;
 import com.gym.gym.dto.Requests.UpdateFitnessRequest;
 import com.gym.gym.dto.Responses.*;
 import com.gym.gym.service.FitnessService;

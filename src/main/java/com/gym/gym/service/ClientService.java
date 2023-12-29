@@ -1,6 +1,5 @@
 package com.gym.gym.service;
 
-//import com.gym.gym.dto.CreateClientRequest;
 
 import com.gym.gym.dto.ClientDTO;
 import com.gym.gym.dto.Requests.CreateClientRequest;
