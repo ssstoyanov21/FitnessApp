@@ -30,9 +30,8 @@ public class ClientMapper {
                 .build();
     }
 
-
     public Client toEntity(CreateClientRequest dto) {
-        Client client = Client.builder()
+        return Client.builder()
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .firstName(dto.getFirstName())
@@ -42,7 +41,5 @@ public class ClientMapper {
                 .role(Role.ROLE_CLIENT)
                 .createAt(LocalDateTime.now())
                 .build();
-        return client;
     }
-
 }

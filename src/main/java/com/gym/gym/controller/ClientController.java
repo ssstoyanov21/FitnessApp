@@ -1,11 +1,9 @@
 package com.gym.gym.controller;
 
 import com.gym.gym.dto.Requests.CreateClientRequest;
+import com.gym.gym.dto.Requests.LoginRequest;
 import com.gym.gym.dto.Requests.UpdateClientRequest;
-import com.gym.gym.dto.Responses.BaseResponse;
-import com.gym.gym.dto.Responses.CreateClientResponse;
-import com.gym.gym.dto.Responses.GetAllClientsResponse;
-import com.gym.gym.dto.Responses.GetClientResponse;
+import com.gym.gym.dto.Responses.*;
 
 import com.gym.gym.service.ClientService;
 import org.springframework.http.HttpStatus;
@@ -60,5 +58,12 @@ public class ClientController {
         }
         return ResponseEntity.noContent().build();
     }
-
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        LoginResponse response = clientService.login(request);
+        if (response.isHasError()){
+            return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
+        }
+        return ResponseEntity.ok(response);
+    }
 }

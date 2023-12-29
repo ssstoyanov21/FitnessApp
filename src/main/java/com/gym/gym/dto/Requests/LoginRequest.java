@@ -12,18 +12,10 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class CreateClientRequest {
+public class LoginRequest {
     @NotBlank(message = "Email is mandatory!")
     @Email(message = "Invalid email address!")
     private String email;
     @NotBlank(message = "Password is mandatory!")
     private String password;
-    //email e zadaljitelno pole i dali emaila e validen , parolata e zadaljitelna
-    @NotBlank(message = "First name is mandatory!")
-    private String firstName;
-    @NotBlank(message = "Last name is mandatory!")
-    private  String lastName;
-    private  Integer age;
-    private  double kg;
 }

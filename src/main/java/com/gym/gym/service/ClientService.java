@@ -3,12 +3,11 @@ package com.gym.gym.service;
 
 import com.gym.gym.dto.ClientDTO;
 import com.gym.gym.dto.Requests.CreateClientRequest;
+import com.gym.gym.dto.Requests.LoginRequest;
 import com.gym.gym.dto.Requests.UpdateClientRequest;
-import com.gym.gym.dto.Responses.BaseResponse;
-import com.gym.gym.dto.Responses.CreateClientResponse;
-import com.gym.gym.dto.Responses.GetAllClientsResponse;
-import com.gym.gym.dto.Responses.GetClientResponse;
+import com.gym.gym.dto.Responses.*;
 import com.gym.gym.entity.Client;
+import com.gym.gym.enums.Role;
 import com.gym.gym.mapper.ClientMapper;
 import com.gym.gym.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class ClientService {
     }
 
     public GetAllClientsResponse getAllClients() {
-        List<Client> clientsEntity = clientRepository.findAll();
+        List<Client> clientsEntity = clientRepository.findByRoleIsNot(Role.ROLE_ADMIN);// durpame vsichki klienti koitot ne sa admini
         List<ClientDTO> clientDTOS = clientsEntity.stream().map(clientMapper::toClientDTO)
                 .collect(Collectors.toList());
         GetAllClientsResponse response = new GetAllClientsResponse();
@@ -134,6 +133,28 @@ public class ClientService {
         }
         clientRepository.delete(client.get());
         return response;
+    }
+    public LoginResponse login(LoginRequest request){
+        LoginResponse response = new LoginResponse();
+        Optional<Client> client = clientRepository.findByEmail(request.getEmail());
+        if (client.isEmpty() || !isExistingEmail(client.get().getEmail())) {
+            response.setErrorMessage("Missing client with this Email.");
+            response.setHasError(true);
+            response.setStatusCode(HttpStatus.BAD_REQUEST.value());//vrusha 400 error
+            return response;
+        }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        boolean matches = passwordEncoder.matches(request.getPassword(), client.get().getPassword());//sravnqva parolata i sravnqva da li e kato tazi ot bazata
+        if(!matches){
+            response.setErrorMessage("Invalid password");
+            response.setHasError(true);
+            response.setStatusCode(HttpStatus.BAD_REQUEST.value());
+            return response;
+        }
+        response.setRole(Optional.of(client.get().getRole()));
+        return response;
+
     }
 
 }
