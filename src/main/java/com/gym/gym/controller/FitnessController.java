@@ -1,5 +1,6 @@
 package com.gym.gym.controller;
 
+import com.gym.gym.dto.Requests.AddExerciseToFitnessRequest;
 import com.gym.gym.dto.Requests.CreateFitnessRequest;
 import com.gym.gym.dto.Requests.UpdateFitnessRequest;
 import com.gym.gym.dto.Responses.*;
@@ -54,6 +55,22 @@ public class FitnessController {
             return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
         }
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/addExercise")    //detailite na fitneesa mogem da dobavim upr kam nego
+    public ResponseEntity<BaseResponse> addExerciseToFitness(@RequestBody AddExerciseToFitnessRequest request){
+        BaseResponse response = fitnessService.addExerciseToFitness(request);
+        if (response.isHasError()){
+            return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
+        }
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/details/{id}")
+    public ResponseEntity<GetFitnessDetailsResponse> getFitnessDetailsById(@PathVariable Long id) {
+        GetFitnessDetailsResponse response = fitnessService.getFitnessDetailsById(id);
+        if (response.isHasError()){
+            return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
+        }
+        return ResponseEntity.ok(response);//vurni mi statuscode 200 s danite
     }
 
 

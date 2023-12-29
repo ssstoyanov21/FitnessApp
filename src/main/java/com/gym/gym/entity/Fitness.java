@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -16,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Fitness {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column
     private String type;
     @Column(nullable = false, unique = true)
@@ -24,4 +27,7 @@ public class Fitness {
     @Column
     private String location;
     //da napravim otdelno entity fitnes kam client many ot many
+    @OneToMany(mappedBy = "fitness", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private  final List<FitnessToExercise> fitnessToExercises = new ArrayList<FitnessToExercise>();
+
 }

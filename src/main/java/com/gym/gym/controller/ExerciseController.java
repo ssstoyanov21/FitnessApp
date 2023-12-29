@@ -58,7 +58,4 @@ public class ExerciseController {
         }
         return ResponseEntity.noContent().build();
     }
-    
-
-
 }

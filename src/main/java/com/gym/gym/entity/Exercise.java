@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Table(name = "Exercise")
@@ -28,6 +30,10 @@ public class Exercise {
     private String fitnessType;
     @Column(nullable = false)
     private Integer complexity;
+    @OneToMany(mappedBy = "exercise", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private  final List<FitnessToExercise> fitnessToExercises = new ArrayList<FitnessToExercise>();
+    //suzdava vruska 1kam mnogo i ima mejdinna tablica exercise, lazy-to ne e zadaljitelno kato vrushta resulta
+    //cascade - da ne ostavat neshta v tablicata;
 
 
 }
