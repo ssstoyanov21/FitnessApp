@@ -73,5 +73,6 @@ public class FitnessController {
         return ResponseEntity.ok(response);//vurni mi statuscode 200 s danite
     }
 
+    //TODO:: FROM FitnessToExercise table to remove exercise with request fitness id and exercise id
 
 }

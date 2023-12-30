@@ -1,5 +1,6 @@
 package com.gym.gym.dto;
 
+import com.gym.gym.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,5 @@ public class ClientDTO {
     private String lastName;
     private Integer age;
     private double kg;
+    private Role role;
 }

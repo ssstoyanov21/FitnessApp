@@ -18,6 +18,7 @@ public class ClientMapper {
                 .lastName(client.getLastName())
                 .age(client.getAge())
                 .kg(client.getKg())
+                .role(client.getRole())
                 .build();
     }
 
