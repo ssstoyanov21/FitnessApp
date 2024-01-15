@@ -15,13 +15,7 @@ public class FitnessMapper {
                 .location(fitness.getLocation())
                 .build();
     }
-    public Fitness toEntity(FitnessDTO dto){
-        return Fitness.builder()
-                .type(dto.getType())
-                .name(dto.getName())
-                .location(dto.getLocation())
-                .build();
-    }
+
     public Fitness toEntity(CreateFitnessRequest request){
         return Fitness.builder()
                 .type(request.getType())

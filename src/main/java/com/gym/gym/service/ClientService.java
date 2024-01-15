@@ -48,7 +48,7 @@ public class ClientService {
             response.setStatusCode(HttpStatus.BAD_REQUEST.value());//vrusha 400 error
             return response;
         }
-        Optional<Client> client = clientRepository.findById(id);//razreshava stoinosta da e 0
+        Optional<Client> client = clientRepository.findById(id);//vrushta resultat ot bazata
         if (client.isEmpty()) {
             response.setErrorMessage("Missing user with current ID..");
             response.setHasError(true);
@@ -78,20 +78,21 @@ public class ClientService {
 
     public BaseResponse updateClient(Long id, UpdateClientRequest request) {
         BaseResponse response = new BaseResponse();
-        if (id <= 0) {
+        if (id <= 0) {//proverka za ID
             response.setErrorMessage("Invalid ID.");
             response.setHasError(true);
             response.setStatusCode(HttpStatus.BAD_REQUEST.value());//vrusha 400 error
             return response;
         }
         Optional<Client> client = clientRepository.findById(id);
-        if (client.isEmpty()) {
+        if (client.isEmpty()) {//dali sushtetuva takuv client
             response.setErrorMessage("Missing user with current ID..");
             response.setHasError(true);
             response.setStatusCode(HttpStatus.BAD_REQUEST.value());//vrusha 400 error
             return response;
         }
         if(!(request.getEmail().equals(client.get().getEmail())) && isExistingEmail(request.getEmail())){
+            //emaila sushtvuva v bazata i dali razlichni s emeila koito imame
             response.setErrorMessage("This email is existing.");
             response.setHasError(true);
             response.setStatusCode(HttpStatus.BAD_REQUEST.value());
@@ -128,7 +129,7 @@ public class ClientService {
         if (client.isEmpty()) {
             response.setErrorMessage("Missing user with current ID..");
             response.setHasError(true);
-            response.setStatusCode(HttpStatus.BAD_REQUEST.value());//vrusha 400 error
+            response.setStatusCode(HttpStatus.BAD_REQUEST.value());
             return response;
         }
         clientRepository.delete(client.get());

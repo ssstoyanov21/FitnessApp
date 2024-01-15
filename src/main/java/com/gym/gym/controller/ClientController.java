@@ -21,11 +21,11 @@ public class ClientController {
 
     @PostMapping("/create")
     public ResponseEntity<CreateClientResponse> createClient(@RequestBody CreateClientRequest clientRequest) {
-        CreateClientResponse response = clientService.createClient(clientRequest);;
+        CreateClientResponse response = clientService.createClient(clientRequest);
         if (response.isHasError()){
             return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
         }
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();//201 uspeshno suzdaden obekt
     }
 
     @GetMapping("/all")
@@ -47,7 +47,7 @@ public class ClientController {
         if (response.isHasError()){
             return ResponseEntity.status(response.getStatusCode()).body(response);//ako ima greshka vurni mi status code
         }
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build();//204 uspeshen update
     }
 
     @DeleteMapping("/delete/{id}")

@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
+    //jparepostory prqka vruska s bazata i ima vgradeni metodi,client long koe entity pipame po bazata danni
     boolean existsByEmail(String email);
     Optional<Client> findByEmail(String email);
     List<Client> findByRoleIsNot(Role role);

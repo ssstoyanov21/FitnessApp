@@ -23,12 +23,10 @@ public class FitnessToExercise {
     private long id;
 
     @ManyToOne
-    //@MapsId("id")
     @JoinColumn(name = "fitness_id")
     private Fitness fitness;
 
     @ManyToOne
-    //@MapsId("id")
     @JoinColumn(name = "exercise_id")
     private Exercise exercise;
 

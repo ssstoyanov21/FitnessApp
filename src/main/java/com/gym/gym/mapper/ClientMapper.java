@@ -22,15 +22,6 @@ public class ClientMapper {
                 .build();
     }
 
-    public CreateClientRequest toCreateClientDTO(Client entity) {
-        return CreateClientRequest.builder()
-                .email(entity.getEmail())
-                .password(entity.getPassword())
-                .firstName(entity.getFirstName())
-                .lastName(entity.getLastName())
-                .build();
-    }
-
     public Client toEntity(CreateClientRequest dto) {
         return Client.builder()
                 .email(dto.getEmail())

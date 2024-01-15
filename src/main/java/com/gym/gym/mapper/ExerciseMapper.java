@@ -16,15 +16,7 @@ public class ExerciseMapper {
                 .complexity(exercise.getComplexity())
                 .build();
     }
-    public Exercise toEntity(ExerciseDTO dto){
-        return Exercise.builder()
-                .name(dto.getName())
-                .description(dto.getDescription())
-                .musclePart(dto.getMusclePart())
-                .fitnessType(dto.getFitnessType())
-                .complexity(dto.getComplexity())
-                .build();
-    }
+
 
     public Exercise toEntity(CreateExerciseRequest request){
         return Exercise.builder()

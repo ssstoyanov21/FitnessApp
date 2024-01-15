@@ -23,7 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class FitnessService {
+public class FitnessService {//constructor - instancii
     private final FitnessRepository fitnessRepository;
     private final FitnessMapper fitnessMapper;
     private final ExerciseRepository exerciseRepository;
